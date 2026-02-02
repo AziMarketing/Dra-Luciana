@@ -52,6 +52,10 @@
         }
         /* Hide Scrollbar */
         ::-webkit-scrollbar { width: 0px; background: transparent; }
+        
+        /* Galeria Hover Effect */
+        .gallery-item:hover img { transform: scale(1.05); }
+        .gallery-item img { transition: transform 0.5s ease; }
     </style>
 </head>
 <body class="flex h-screen overflow-hidden font-sans">
@@ -72,14 +76,12 @@
                     <p class="text-xs text-gray-400 mt-2 hover:underline">@dralucianaalcantara_</p>
                 </a>
             </div>
-
             <nav class="mt-6 flex flex-col gap-1">
                 <a href="#" class="px-8 py-4 nav-item active flex items-center gap-4 font-bold text-sm"><i class="fa-solid fa-chart-line w-5"></i> Visão Geral</a>
-                <a href="#" class="px-8 py-4 nav-item flex items-center gap-4 font-semibold text-sm text-gray-500 hover:text-brand-coffee"><i class="fa-regular fa-images w-5"></i> Criativos</a>
-                <a href="#" class="px-8 py-4 nav-item flex items-center gap-4 font-semibold text-sm text-gray-500 hover:text-brand-coffee"><i class="fa-brands fa-instagram w-5"></i> Instagram Ads</a>
+                <a href="#galeria" class="px-8 py-4 nav-item flex items-center gap-4 font-semibold text-sm text-gray-500 hover:text-brand-coffee"><i class="fa-regular fa-images w-5"></i> Galeria de Conteúdo</a>
+                <a href="#" class="px-8 py-4 nav-item flex items-center gap-4 font-semibold text-sm text-gray-500 hover:text-brand-coffee"><i class="fa-brands fa-instagram w-5"></i> Ads</a>
             </nav>
         </div>
-        
         <div class="p-6 bg-brand-sand/10 border-t border-brand-sand/10">
             <div class="flex items-center gap-3 opacity-60 hover:opacity-100 transition grayscale hover:grayscale-0">
                 <img src="logo_azi.png" alt="Azi Logo" class="w-8 h-8 object-contain bg-white rounded p-0.5 shadow-sm">
@@ -91,7 +93,7 @@
         </div>
     </aside>
 
-    <main class="flex-1 overflow-y-auto relative">
+    <main class="flex-1 overflow-y-auto relative scroll-smooth">
         <header class="bg-white/80 backdrop-blur-md sticky top-0 z-10 px-8 py-5 flex justify-between items-center border-b border-brand-sand/20">
             <div>
                 <h2 class="text-2xl font-serif font-bold text-brand-coffee">Performance Digital</h2>
@@ -105,7 +107,7 @@
             </button>
         </header>
 
-        <div class="p-8 max-w-7xl mx-auto space-y-8">
+        <div class="p-8 max-w-7xl mx-auto space-y-12">
             
             <div class="bg-white border border-brand-gold/30 rounded-xl p-5 shadow-sm flex items-center gap-5 relative overflow-hidden">
                 <div class="absolute right-0 top-0 w-64 h-full bg-gradient-to-l from-brand-sand/20 to-transparent"></div>
@@ -113,7 +115,7 @@
                     <i class="fa-solid fa-trophy text-lg"></i>
                 </div>
                 <div class="z-10">
-                    <h4 class="font-serif font-bold text-brand-coffee text-lg">Crescimento Recorde no Instagram!</h4>
+                    <h4 class="font-serif font-bold text-brand-coffee text-lg">Crescimento Recorde!</h4>
                     <p class="text-sm text-gray-600 mt-1">Suas visualizações saltaram de 2k para <strong class="text-brand-coffee">6.500</strong> (+211%). Sua produção de conteúdo aumentou de 2 para <strong class="text-brand-coffee">28 publicações</strong>.</p>
                 </div>
             </div>
@@ -174,42 +176,57 @@
                 </div>
             </div>
 
-            <div class="mt-8">
-                <h3 class="font-serif text-2xl font-bold text-brand-coffee mb-6 border-l-4 border-brand-gold pl-4">Identidade Visual & Conteúdo</h3>
+            <div id="galeria">
+                <h3 class="font-serif text-2xl font-bold text-brand-coffee mb-6 border-l-4 border-brand-gold pl-4 flex items-center gap-3">
+                    Galeria de Conteúdo 
+                    <span class="text-xs font-sans font-normal bg-brand-sand/20 px-3 py-1 rounded-full text-brand-coffee">Janeiro 2026</span>
+                </h3>
                 
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    <div class="group relative rounded-xl overflow-hidden shadow-lg aspect-[9/16] cursor-pointer">
-                        <img src="story_medicina.jpg" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                            <span class="text-white font-serif text-lg">Branding</span>
-                        </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    
+                    <div class="gallery-item group relative rounded-xl overflow-hidden shadow-lg aspect-[9/16] cursor-pointer">
+                        <img src="1.jpg" class="w-full h-full object-cover">
                         <div class="absolute top-3 left-3 bg-white/90 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-brand-coffee">Story</div>
                     </div>
 
-                    <div class="group relative rounded-xl overflow-hidden shadow-lg aspect-[9/16] cursor-pointer">
-                        <img src="story_dor.jpg" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                            <span class="text-white font-serif text-lg">Educativo</span>
-                        </div>
+                    <div class="gallery-item group relative rounded-xl overflow-hidden shadow-lg aspect-[9/16] cursor-pointer">
+                        <img src="2.jpg" class="w-full h-full object-cover">
                         <div class="absolute top-3 left-3 bg-white/90 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-brand-coffee">Story</div>
                     </div>
 
-                    <div class="group relative rounded-xl overflow-hidden shadow-lg aspect-[9/16] cursor-pointer">
-                        <img src="story_horarios.jpg" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                            <span class="text-white font-serif text-lg">Conversão</span>
-                        </div>
+                    <div class="gallery-item group relative rounded-xl overflow-hidden shadow-lg aspect-[9/16] cursor-pointer">
+                        <img src="3.jpg" class="w-full h-full object-cover">
                         <div class="absolute top-3 left-3 bg-white/90 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-brand-coffee">Story</div>
                     </div>
 
-                    <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col justify-center items-center text-center border border-brand-sand/30">
+                    <div class="gallery-item group relative rounded-xl overflow-hidden shadow-lg aspect-[9/16] cursor-pointer">
+                        <img src="6.jpg" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 bg-white/90 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-brand-coffee">Conversão</div>
+                    </div>
+
+                    <div class="gallery-item group relative rounded-xl overflow-hidden shadow-lg aspect-[9/16] cursor-pointer">
+                        <img src="4.jpg" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 bg-white/90 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-brand-coffee">Bastidores</div>
+                    </div>
+
+                    <div class="gallery-item group relative rounded-xl overflow-hidden shadow-lg aspect-[9/16] cursor-pointer">
+                        <img src="5.jpg" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 bg-white/90 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-brand-coffee">Autoridade</div>
+                    </div>
+
+                     <div class="gallery-item group relative rounded-xl overflow-hidden shadow-lg aspect-[9/16] cursor-pointer">
+                        <img src="7.jpg" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 bg-white/90 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-brand-coffee">Branding</div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col justify-center items-center text-center border border-brand-sand/30 aspect-[9/16]">
                         <div class="w-16 h-16 bg-brand-beige rounded-full flex items-center justify-center mb-4 text-brand-coffee text-2xl">
                             <i class="fa-solid fa-camera"></i>
                         </div>
-                        <h4 class="font-serif font-bold text-brand-coffee text-xl">25 Stories</h4>
-                        <p class="text-xs text-gray-500 mt-2">Produzidos em Janeiro</p>
+                        <h4 class="font-serif font-bold text-brand-coffee text-xl">28 Postagens</h4>
+                        <p class="text-xs text-gray-500 mt-2">Criadas e publicadas em Janeiro</p>
                         <div class="w-full h-px bg-brand-sand/30 my-4"></div>
-                        <p class="text-[10px] text-brand-growth font-bold uppercase">Recorde Mensal</p>
+                        <p class="text-[10px] text-brand-growth font-bold uppercase">+1.300% vs Dezembro</p>
                     </div>
                 </div>
             </div>
