@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Relatório de Performance | Dra. Luciana Alcântara</title>
+    <title>Relatório Mensal | Dra. Luciana Alcântara</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -25,13 +25,12 @@
                     },
                     colors: { 
                         brand: { 
-                            beige: '#F9F7F5',   /* Fundo Off-White Quente */
-                            sand: '#E6D2BF',    /* Tom Nude */
-                            gold: '#C5A075',    /* Dourado Premium */
-                            coffee: '#4A4036',  /* Marrom Café (Texto) */
-                            azi: '#16a34a',     /* Verde Azi (Discreto) */
-                            growth: '#10B981',  /* Verde Positivo */
-                            purple: '#9333EA'
+                            beige: '#F9F7F5',
+                            sand: '#E6D2BF',
+                            gold: '#C5A075',
+                            coffee: '#4A4036',
+                            azi: '#16a34a',
+                            growth: '#10B981'
                         } 
                     }
                 }
@@ -41,37 +40,22 @@
 
     <style>
         body { background-color: #F9F7F5; color: #4A4036; }
-        
-        /* Glass Effect Premium */
         .glass-card { 
             background: rgba(255, 255, 255, 0.95); 
-            border: 1px solid rgba(197, 160, 117, 0.15); 
-            box-shadow: 0 10px 30px -10px rgba(74, 64, 54, 0.05); 
-            border-radius: 16px;
+            border: 1px solid rgba(197, 160, 117, 0.1); 
+            box-shadow: 0 4px 25px -5px rgba(74, 64, 54, 0.05); 
         }
-
-        /* Sidebar Navigation */
-        .nav-item { border-left: 3px solid transparent; transition: all 0.3s; }
         .nav-item:hover, .nav-item.active { 
             background: linear-gradient(90deg, #F5F0EB 0%, #F9F7F5 100%);
-            border-left-color: #C5A075;
+            border-left: 3px solid #C5A075;
             color: #C5A075;
         }
-
-        /* Animação suave de entrada */
-        .fade-in-up {
-            animation: fadeInUp 0.8s ease-out forwards;
-            opacity: 0; transform: translateY(20px);
-        }
-        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
-        .delay-100 { animation-delay: 0.1s; }
-        .delay-200 { animation-delay: 0.2s; }
-        .delay-300 { animation-delay: 0.3s; }
-
-        /* Scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #E6D2BF; border-radius: 10px; }
+        /* Hide Scrollbar */
+        ::-webkit-scrollbar { width: 0px; background: transparent; }
+        
+        /* Galeria Hover Effect */
+        .gallery-item img { transition: transform 0.5s ease; }
+        .gallery-item:hover img { transform: scale(1.05); }
     </style>
 </head>
 <body class="flex h-screen overflow-hidden font-sans">
@@ -80,7 +64,7 @@
         <div>
             <div class="p-8 text-center border-b border-brand-sand/10">
                 <a href="https://www.instagram.com/dralucianaalcantara_/" target="_blank" class="group block">
-                    <div class="relative w-28 h-28 mx-auto mb-4">
+                    <div class="relative w-28 h-28 mx-auto mb-4 group">
                         <div class="absolute inset-0 rounded-full border border-brand-gold p-1 transition duration-500 group-hover:border-brand-coffee">
                             <img src="foto.jpg" alt="Dra. Luciana" class="w-full h-full object-cover rounded-full shadow-md group-hover:scale-105 transition duration-500">
                         </div>
@@ -92,14 +76,12 @@
                     <p class="text-xs text-gray-400 mt-2 hover:underline">@dralucianaalcantara_</p>
                 </a>
             </div>
-
             <nav class="mt-6 flex flex-col gap-1">
                 <a href="#" class="px-8 py-4 nav-item active flex items-center gap-4 font-bold text-sm"><i class="fa-solid fa-chart-line w-5"></i> Visão Geral</a>
                 <a href="#galeria" class="px-8 py-4 nav-item flex items-center gap-4 font-semibold text-sm text-gray-500 hover:text-brand-coffee"><i class="fa-regular fa-images w-5"></i> Galeria de Conteúdo</a>
-                <a href="#" class="px-8 py-4 nav-item flex items-center gap-4 font-semibold text-sm text-gray-500 hover:text-brand-coffee"><i class="fa-brands fa-instagram w-5"></i> Instagram Ads</a>
+                <a href="#" class="px-8 py-4 nav-item flex items-center gap-4 font-semibold text-sm text-gray-500 hover:text-brand-coffee"><i class="fa-brands fa-instagram w-5"></i> Ads</a>
             </nav>
         </div>
-        
         <div class="p-6 bg-brand-sand/10 border-t border-brand-sand/10">
             <div class="flex items-center gap-3 opacity-60 hover:opacity-100 transition grayscale hover:grayscale-0">
                 <img src="logo_azi.png" alt="Azi Logo" class="w-8 h-8 object-contain bg-white rounded p-0.5 shadow-sm">
@@ -112,7 +94,6 @@
     </aside>
 
     <main class="flex-1 overflow-y-auto relative scroll-smooth">
-        
         <header class="bg-white/80 backdrop-blur-md sticky top-0 z-10 px-8 py-5 flex justify-between items-center border-b border-brand-sand/20">
             <div>
                 <h2 class="text-2xl font-serif font-bold text-brand-coffee">Performance Digital</h2>
@@ -121,92 +102,63 @@
                     <p class="text-xs text-gray-400">Referência: Janeiro 2026</p>
                 </div>
             </div>
-            <button onclick="window.print()" class="bg-brand-coffee hover:bg-black text-white px-6 py-2.5 rounded-full text-sm transition shadow-lg flex items-center gap-2 transform hover:-translate-y-0.5">
-                <i class="fa-solid fa-file-pdf"></i> Exportar PDF
+            <button onclick="window.print()" class="bg-brand-coffee hover:bg-black text-white px-6 py-2.5 rounded-full text-sm transition shadow-lg flex items-center gap-2">
+                <i class="fa-solid fa-file-pdf"></i> Exportar
             </button>
         </header>
 
-        <div class="p-8 max-w-7xl mx-auto space-y-10">
+        <div class="p-8 max-w-7xl mx-auto space-y-12">
             
-            <div class="bg-white border border-brand-gold/30 rounded-xl p-6 shadow-sm flex items-center gap-6 relative overflow-hidden fade-in-up">
-                <div class="absolute right-0 top-0 w-48 h-full bg-gradient-to-l from-brand-sand/20 to-transparent pointer-events-none"></div>
-                <div class="w-14 h-14 rounded-full bg-brand-gold text-white flex items-center justify-center shrink-0 shadow-md z-10">
-                    <i class="fa-solid fa-trophy text-2xl"></i>
+            <div class="bg-white border border-brand-gold/30 rounded-xl p-5 shadow-sm flex items-center gap-5 relative overflow-hidden">
+                <div class="absolute right-0 top-0 w-64 h-full bg-gradient-to-l from-brand-sand/20 to-transparent"></div>
+                <div class="w-12 h-12 rounded-full bg-brand-gold text-white flex items-center justify-center shrink-0 shadow-md z-10">
+                    <i class="fa-solid fa-trophy text-lg"></i>
                 </div>
                 <div class="z-10">
-                    <h4 class="font-serif font-bold text-brand-coffee text-xl mb-1">Janeiro de Recordes!</h4>
-                    <p class="text-sm text-gray-600 leading-relaxed">
-                        Suas visualizações saltaram de 2k para <strong class="text-brand-coffee">6.500</strong> (+211%). 
-                        Sua consistência na produção de conteúdo (de 2 para <strong class="text-brand-coffee">28 publicações</strong>) foi a chave para esse resultado.
-                    </p>
+                    <h4 class="font-serif font-bold text-brand-coffee text-lg">Crescimento Recorde!</h4>
+                    <p class="text-sm text-gray-600 mt-1">Suas visualizações saltaram de 2k para <strong class="text-brand-coffee">6.500</strong> (+211%). Sua produção de conteúdo aumentou de 2 para <strong class="text-brand-coffee">28 publicações</strong>.</p>
                 </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="glass-card p-6 relative overflow-hidden fade-in-up group border-l-4 border-l-brand-gold">
-                    <div class="flex justify-between items-start mb-3">
-                        <p class="text-xs text-gray-500 font-bold uppercase tracking-wider">Visualizações</p>
-                        <i class="fa-solid fa-chart-simple text-brand-gold/50 group-hover:scale-110 transition"></i>
-                    </div>
+                <div class="glass-card p-6 rounded-xl relative overflow-hidden">
+                    <p class="text-xs text-gray-500 font-bold uppercase tracking-wider mb-2">Visualizações</p>
                     <div class="flex items-end gap-2">
                         <h3 class="text-4xl font-serif text-brand-coffee">6.5K</h3>
                         <span class="text-xs font-bold text-brand-growth bg-green-50 px-2 py-1 rounded mb-1 border border-green-100">+211%</span>
                     </div>
-                    <p class="text-[10px] text-gray-400 mt-2">vs 2.0K em Dezembro</p>
                 </div>
-
-                <div class="glass-card p-6 relative overflow-hidden fade-in-up delay-100 group">
-                    <div class="flex justify-between items-start mb-3">
-                        <p class="text-xs text-gray-500 font-bold uppercase tracking-wider">Novos Seguidores</p>
-                        <i class="fa-solid fa-user-plus text-brand-gold/50 group-hover:scale-110 transition"></i>
-                    </div>
+                <div class="glass-card p-6 rounded-xl relative overflow-hidden">
+                    <p class="text-xs text-gray-500 font-bold uppercase tracking-wider mb-2">Novos Seguidores</p>
                     <div class="flex items-end gap-2">
                         <h3 class="text-4xl font-serif text-brand-coffee">+12</h3>
-                        <span class="text-xs font-bold text-brand-growth bg-green-50 px-2 py-1 rounded mb-1 border border-green-100">Dobrou</span>
+                        <span class="text-xs font-bold text-brand-growth bg-green-50 px-2 py-1 rounded mb-1">Dobrou</span>
                     </div>
-                    <p class="text-[10px] text-gray-400 mt-2">Crescimento Orgânico</p>
                 </div>
-
-                <div class="glass-card p-6 relative overflow-hidden fade-in-up delay-200 group">
-                    <div class="flex justify-between items-start mb-3">
-                        <p class="text-xs text-gray-500 font-bold uppercase tracking-wider">Interações</p>
-                        <i class="fa-regular fa-heart text-brand-gold/50 group-hover:scale-110 transition"></i>
-                    </div>
+                <div class="glass-card p-6 rounded-xl relative overflow-hidden">
+                    <p class="text-xs text-gray-500 font-bold uppercase tracking-wider mb-2">Interações</p>
                     <div class="flex items-end gap-2">
                         <h3 class="text-4xl font-serif text-brand-coffee">247</h3>
-                        <span class="text-xs font-bold text-brand-growth bg-green-50 px-2 py-1 rounded mb-1 border border-green-100">+223%</span>
+                        <span class="text-xs font-bold text-brand-growth bg-green-50 px-2 py-1 rounded mb-1">+223%</span>
                     </div>
-                    <p class="text-[10px] text-gray-400 mt-2">Curtidas + Comentários</p>
                 </div>
-
-                <div class="glass-card p-6 relative overflow-hidden fade-in-up delay-300 group">
-                    <div class="flex justify-between items-start mb-3">
-                        <p class="text-xs text-gray-500 font-bold uppercase tracking-wider">Cliques na Bio</p>
-                        <i class="fa-brands fa-whatsapp text-brand-gold text-xl group-hover:scale-110 transition"></i>
-                    </div>
+                <div class="glass-card p-6 rounded-xl relative overflow-hidden border-b-4 border-b-brand-gold">
+                    <p class="text-xs text-gray-500 font-bold uppercase tracking-wider mb-2">Cliques no Link</p>
                     <div class="flex items-end gap-2">
                         <h3 class="text-4xl font-serif text-brand-coffee">18</h3>
-                        <span class="text-xs font-bold text-brand-growth bg-green-50 px-2 py-1 rounded mb-1 border border-green-100">+350%</span>
+                        <span class="text-xs font-bold text-brand-growth bg-green-50 px-2 py-1 rounded mb-1">+350%</span>
                     </div>
-                    <p class="text-[10px] text-gray-400 mt-2">Leads Qualificados</p>
+                    <p class="text-[10px] text-gray-400 mt-2">Leads qualificados na Bio</p>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10">
-                
-                <div class="lg:col-span-2 glass-card p-8 fade-in-up delay-300">
-                    <div class="flex justify-between items-center mb-6">
-                        <div>
-                            <h3 class="font-serif text-xl font-bold text-brand-coffee">Evolução Mensal</h3>
-                            <p class="text-xs text-gray-400">Comparativo Visualizações: Dezembro vs Janeiro</p>
-                        </div>
-                    </div>
-                    <div class="relative h-72 w-full">
-                        <canvas id="viewsChart"></canvas>
-                    </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="glass-card p-8 rounded-xl lg:col-span-2">
+                    <h3 class="font-serif text-xl font-bold text-brand-coffee mb-6">Evolução Mensal (Instagram)</h3>
+                    <div class="relative h-72 w-full"><canvas id="viewsChart"></canvas></div>
                 </div>
 
-                <div class="glass-card p-0 overflow-hidden shadow-md h-fit fade-in-up delay-300">
+                <div class="glass-card p-0 rounded-xl overflow-hidden shadow-md h-fit">
                     <div class="p-4 bg-brand-coffee text-white flex justify-between items-center">
                         <h3 class="font-serif font-bold text-sm">Post Campeão</h3>
                         <i class="fa-solid fa-crown text-brand-gold"></i>
@@ -221,13 +173,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="p-4 text-xs text-center text-gray-500 bg-white border-t border-gray-100">
-                        "Superou todos os outros conteúdos do mês passado."
-                    </div>
                 </div>
             </div>
 
-            <div id="galeria" class="fade-in-up delay-300">
+            <div id="galeria">
                 <h3 class="font-serif text-2xl font-bold text-brand-coffee mb-6 border-l-4 border-brand-gold pl-4 flex items-center gap-3">
                     Galeria de Conteúdo 
                     <span class="text-xs font-sans font-normal bg-brand-sand/20 px-3 py-1 rounded-full text-brand-coffee">Janeiro 2026</span>
@@ -235,86 +184,57 @@
                 
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     
-                    <div class="group relative rounded-xl overflow-hidden shadow-lg aspect-[9/16] cursor-pointer glass-card p-0">
-                        <img src="1.jpg" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/60 to-transparent p-4 opacity-0 group-hover:opacity-100 transition duration-300">
-                            <span class="text-white text-xs font-bold uppercase tracking-wider">Story Educativo</span>
-                        </div>
+                    <div class="gallery-item group relative rounded-xl overflow-hidden shadow-lg aspect-[9/16] cursor-pointer glass-card p-0">
+                        <img src="7.jpg" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 bg-white/90 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-brand-coffee">Série Educativa 1/4</div>
+                    </div>
+                    <div class="gallery-item group relative rounded-xl overflow-hidden shadow-lg aspect-[9/16] cursor-pointer glass-card p-0">
+                        <img src="8.jpg" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 bg-white/90 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-brand-coffee">Série Educativa 2/4</div>
+                    </div>
+                    <div class="gallery-item group relative rounded-xl overflow-hidden shadow-lg aspect-[9/16] cursor-pointer glass-card p-0">
+                        <img src="9.jpg" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 bg-white/90 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-brand-coffee">Série Educativa 3/4</div>
+                    </div>
+                    <div class="gallery-item group relative rounded-xl overflow-hidden shadow-lg aspect-[9/16] cursor-pointer glass-card p-0">
+                        <img src="10.jpg" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 bg-white/90 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-brand-coffee">Série Educativa 4/4</div>
                     </div>
 
-                    <div class="group relative rounded-xl overflow-hidden shadow-lg aspect-[9/16] cursor-pointer glass-card p-0">
-                        <img src="2.jpg" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/60 to-transparent p-4 opacity-0 group-hover:opacity-100 transition duration-300">
-                            <span class="text-white text-xs font-bold uppercase tracking-wider">Branding</span>
-                        </div>
+                    <div class="gallery-item group relative rounded-xl overflow-hidden shadow-lg aspect-[9/16] cursor-pointer glass-card p-0">
+                        <img src="2.jpg" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 bg-white/90 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-brand-coffee">Branding</div>
+                    </div>
+                    <div class="gallery-item group relative rounded-xl overflow-hidden shadow-lg aspect-[9/16] cursor-pointer glass-card p-0">
+                        <img src="4.jpg" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 bg-white/90 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-brand-coffee">Bastidores</div>
+                    </div>
+                    <div class="gallery-item group relative rounded-xl overflow-hidden shadow-lg aspect-[9/16] cursor-pointer glass-card p-0">
+                        <img src="5.jpg" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 bg-white/90 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-brand-coffee">Autoridade</div>
                     </div>
 
-                    <div class="group relative rounded-xl overflow-hidden shadow-lg aspect-[9/16] cursor-pointer glass-card p-0">
-                        <img src="3.jpg" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/60 to-transparent p-4 opacity-0 group-hover:opacity-100 transition duration-300">
-                            <span class="text-white text-xs font-bold uppercase tracking-wider">Aviso</span>
-                        </div>
+                    <div class="gallery-item group relative rounded-xl overflow-hidden shadow-lg aspect-[9/16] cursor-pointer glass-card p-0">
+                        <img src="6.jpg" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 bg-white/90 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-brand-coffee">Agenda</div>
+                    </div>
+                    <div class="gallery-item group relative rounded-xl overflow-hidden shadow-lg aspect-[9/16] cursor-pointer glass-card p-0">
+                        <img src="3.jpg" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 bg-white/90 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-brand-coffee">Aviso</div>
+                    </div>
+                    <div class="gallery-item group relative rounded-xl overflow-hidden shadow-lg aspect-[9/16] cursor-pointer glass-card p-0">
+                        <img src="1.jpg" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 bg-white/90 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-brand-coffee">Story</div>
                     </div>
 
-                    <div class="group relative rounded-xl overflow-hidden shadow-lg aspect-[9/16] cursor-pointer glass-card p-0">
-                        <img src="6.jpg" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/60 to-transparent p-4 opacity-0 group-hover:opacity-100 transition duration-300">
-                            <span class="text-white text-xs font-bold uppercase tracking-wider">Conversão</span>
-                        </div>
-                    </div>
-
-                    <div class="group relative rounded-xl overflow-hidden shadow-lg aspect-[9/16] cursor-pointer glass-card p-0">
-                        <img src="4.jpg" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                    </div>
-
-                    <div class="group relative rounded-xl overflow-hidden shadow-lg aspect-[9/16] cursor-pointer glass-card p-0">
-                        <img src="5.jpg" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                    </div>
-
-                     <div class="group relative rounded-xl overflow-hidden shadow-lg aspect-[9/16] cursor-pointer glass-card p-0">
-                        <img src="7.jpg" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                    </div>
-
-                    <div class="glass-card p-6 flex flex-col justify-center items-center text-center aspect-[9/16] bg-brand-coffee text-white">
-                        <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mb-4 text-brand-gold text-2xl">
+                    <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col justify-center items-center text-center border border-brand-sand/30 aspect-[9/16]">
+                        <div class="w-16 h-16 bg-brand-beige rounded-full flex items-center justify-center mb-4 text-brand-coffee text-2xl">
                             <i class="fa-solid fa-camera"></i>
                         </div>
-                        <h4 class="font-serif font-bold text-xl">28 Postagens</h4>
-                        <p class="text-xs text-brand-sand mt-2">Criadas e publicadas em Janeiro</p>
-                        <div class="w-full h-px bg-white/10 my-6"></div>
-                        <p class="text-[10px] font-bold uppercase tracking-widest text-brand-growth">+1.300% vs Dezembro</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-brand-coffee rounded-2xl p-8 text-white relative overflow-hidden shadow-2xl fade-in-up">
-                <div class="absolute top-0 right-0 w-64 h-64 bg-brand-gold rounded-full filter blur-[80px] opacity-20 -mr-10 -mt-10"></div>
-                <div class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <div>
-                        <h3 class="text-2xl font-bold font-title mb-6 flex items-center gap-3">
-                            <i class="fa-solid fa-lightbulb text-brand-gold"></i> Insights da Azi
-                        </h3>
-                        <ul class="space-y-4 text-brand-beige text-sm leading-relaxed">
-                            <li class="flex gap-4">
-                                <i class="fa-solid fa-check-circle text-brand-gold mt-1 text-lg"></i>
-                                <span>O post <strong>"Quem Sou Eu"</strong> validou que o público quer conexão pessoal. Posts com sua foto geram 3x mais engajamento.</span>
-                            </li>
-                            <li class="flex gap-4">
-                                <i class="fa-solid fa-check-circle text-brand-gold mt-1 text-lg"></i>
-                                <span>O volume de <strong>25 stories</strong> criou um efeito de "presença constante", aumentando a retenção do público.</span>
-                            </li>
-                            <li class="flex gap-4">
-                                <i class="fa-solid fa-check-circle text-brand-gold mt-1 text-lg"></i>
-                                <span>Horário nobre confirmado: <strong>18h às 21h</strong> (Seg/Qua/Sáb) é quando sua audiência está online.</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="flex items-center justify-center">
-                        <div class="bg-white/5 p-6 rounded-xl border border-white/10 text-center w-full">
-                            <p class="text-xs uppercase tracking-widest text-brand-gold mb-2">Próximo Passo</p>
-                            <h4 class="text-xl font-bold mb-4">Foco em Reels Educativos</h4>
-                            <p class="text-sm text-gray-400">Expandir o alcance usando vídeos curtos sobre dúvidas comuns (ex: DIU, SOP, Menopausa).</p>
-                        </div>
+                        <h4 class="font-serif font-bold text-brand-coffee text-xl">28 Postagens</h4>
+                        <p class="text-xs text-gray-500 mt-2">Criadas e publicadas em Janeiro</p>
+                        <div class="w-full h-px bg-brand-sand/30 my-4"></div>
+                        <p class="text-[10px] text-brand-growth font-bold uppercase">+1.300% vs Dezembro</p>
                     </div>
                 </div>
             </div>
