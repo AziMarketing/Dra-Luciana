@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Relatório de Performance | Dra. Luciana Alcântara</title>
+    <title>Relatório Mensal | Dra. Luciana Alcântara</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -25,15 +25,13 @@
                     },
                     colors: { 
                         brand: { 
-                            beige: '#F5F0EB',   /* Extraído do fundo da foto */
-                            sand: '#DCC8B6',    /* Tom de pele/nude */
-                            gold: '#C5A075',    /* Tom dourado do texto da foto */
-                            coffee: '#4A4036',  /* Tom escuro/marrom do cabelo e texto */
-                            azi: '#16a34a'      /* Verde da Azi para assinatura discreta */
+                            beige: '#F9F7F5',
+                            sand: '#E6D2BF',
+                            gold: '#C5A075',
+                            coffee: '#4A4036',
+                            azi: '#16a34a',
+                            growth: '#10B981'
                         } 
-                    },
-                    boxShadow: {
-                        'soft': '0 10px 40px -10px rgba(74, 64, 54, 0.08)',
                     }
                 }
             }
@@ -41,297 +39,218 @@
     </script>
 
     <style>
-        body { background-color: #FAF9F6; color: #4A4036; }
-        
-        /* Efeito de Vidro Fosco */
-        .glass-panel { 
-            background: rgba(255, 255, 255, 0.9); 
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(220, 200, 182, 0.3); 
-            box-shadow: 0 4px 20px rgba(74, 64, 54, 0.03); 
+        body { background-color: #F9F7F5; color: #4A4036; }
+        .glass-card { 
+            background: rgba(255, 255, 255, 0.95); 
+            border: 1px solid rgba(197, 160, 117, 0.1); 
+            box-shadow: 0 4px 25px -5px rgba(74, 64, 54, 0.05); 
         }
-
-        /* Sidebar Ativa */
-        .nav-link { transition: all 0.3s ease; border-right: 3px solid transparent; }
-        .nav-link:hover, .nav-active { 
-            background: linear-gradient(90deg, rgba(245, 240, 235, 0.5) 0%, rgba(245, 240, 235, 1) 100%);
-            color: #C5A075; 
-            border-right-color: #C5A075; 
+        .nav-item:hover, .nav-item.active { 
+            background: linear-gradient(90deg, #F5F0EB 0%, #F9F7F5 100%);
+            border-left: 3px solid #C5A075;
+            color: #C5A075;
         }
-
-        /* Scrollbar Personalizada */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb { background: #DCC8B6; border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: #C5A075; }
+        /* Hide Scrollbar */
+        ::-webkit-scrollbar { width: 0px; background: transparent; }
     </style>
 </head>
 <body class="flex h-screen overflow-hidden font-sans">
 
-    <aside class="w-72 bg-white border-r border-brand-sand/30 hidden md:flex flex-col justify-between z-20 shadow-soft">
+    <aside class="w-72 bg-white border-r border-brand-sand/20 hidden md:flex flex-col justify-between z-20 shadow-sm">
         <div>
-            <div class="p-10 text-center">
-                <div class="w-16 h-16 mx-auto mb-3 border border-brand-gold rounded-full p-1">
-                    <img src="foto.jpg" class="w-full h-full object-cover rounded-full opacity-80" alt="Icone">
-                </div>
-                <h1 class="font-serif text-xl font-bold tracking-wide text-brand-coffee">DRA. LUCIANA<br><span class="text-xs font-sans tracking-[0.2em] text-brand-gold uppercase font-normal">Alcântara</span></h1>
+            <div class="p-8 text-center border-b border-brand-sand/10">
+                <a href="https://www.instagram.com/dralucianaalcantara_/" target="_blank" class="group block">
+                    <div class="relative w-28 h-28 mx-auto mb-4">
+                        <div class="absolute inset-0 rounded-full border border-brand-gold p-1 transition duration-500 group-hover:border-brand-coffee">
+                            <img src="foto.jpg" alt="Dra. Luciana" class="w-full h-full object-cover rounded-full shadow-md group-hover:scale-105 transition duration-500">
+                        </div>
+                        <div class="absolute bottom-1 right-1 bg-white rounded-full p-1.5 shadow-sm border border-gray-100 text-pink-600 text-xs">
+                            <i class="fa-brands fa-instagram"></i>
+                        </div>
+                    </div>
+                    <h1 class="font-serif text-xl font-bold tracking-wide text-brand-coffee group-hover:text-brand-gold transition">DRA. LUCIANA<br><span class="text-xs font-sans tracking-[0.25em] text-brand-gold uppercase font-normal group-hover:text-brand-coffee">Alcântara</span></h1>
+                    <p class="text-xs text-gray-400 mt-2 hover:underline">@dralucianaalcantara_</p>
+                </a>
             </div>
 
-            <nav class="mt-4 flex flex-col gap-1">
-                <a href="#" class="px-8 py-4 nav-active flex items-center gap-4 font-semibold text-sm">
-                    <i class="fa-solid fa-chart-pie w-5"></i> Visão Geral
-                </a>
-                <a href="#" class="px-8 py-4 text-gray-400 hover:text-brand-coffee nav-link flex items-center gap-4 font-semibold text-sm">
-                    <i class="fa-brands fa-instagram w-5"></i> Instagram
-                </a>
-                <a href="#" class="px-8 py-4 text-gray-400 hover:text-brand-coffee nav-link flex items-center gap-4 font-semibold text-sm">
-                    <i class="fa-brands fa-facebook w-5"></i> Facebook Ads
-                </a>
-                <a href="#" class="px-8 py-4 text-gray-400 hover:text-brand-coffee nav-link flex items-center gap-4 font-semibold text-sm">
-                    <i class="fa-solid fa-users w-5"></i> Base de Pacientes
-                </a>
+            <nav class="mt-6 flex flex-col gap-1">
+                <a href="#" class="px-8 py-4 nav-item active flex items-center gap-4 font-bold text-sm"><i class="fa-solid fa-chart-line w-5"></i> Visão Geral</a>
+                <a href="#" class="px-8 py-4 nav-item flex items-center gap-4 font-semibold text-sm text-gray-500 hover:text-brand-coffee"><i class="fa-regular fa-images w-5"></i> Criativos</a>
+                <a href="#" class="px-8 py-4 nav-item flex items-center gap-4 font-semibold text-sm text-gray-500 hover:text-brand-coffee"><i class="fa-brands fa-instagram w-5"></i> Instagram Ads</a>
             </nav>
         </div>
-
-        <div class="p-6 bg-gradient-to-t from-gray-50 to-white">
-            <div class="flex items-center gap-3 opacity-80 hover:opacity-100 transition">
-                <img src="logo_azi.png" alt="Azi Logo" class="w-10 h-10 object-contain rounded-md shadow-sm bg-white p-1">
-                <div class="text-xs leading-tight">
-                    <p class="font-bold text-gray-600">Performance por</p>
-                    <p class="text-brand-azi font-bold">Azi Comunicação</p>
+        
+        <div class="p-6 bg-brand-sand/10 border-t border-brand-sand/10">
+            <div class="flex items-center gap-3 opacity-60 hover:opacity-100 transition grayscale hover:grayscale-0">
+                <img src="logo_azi.png" alt="Azi Logo" class="w-8 h-8 object-contain bg-white rounded p-0.5 shadow-sm">
+                <div class="text-[10px] leading-tight">
+                    <p class="font-bold text-gray-500">Inteligência de Dados</p>
+                    <p class="text-brand-azi font-bold text-xs">Azi Comunicação</p>
                 </div>
             </div>
         </div>
     </aside>
 
-    <main class="flex-1 overflow-y-auto relative bg-[#FAF9F6]">
-        
-        <header class="bg-white/80 backdrop-blur-md sticky top-0 z-10 px-8 py-4 flex justify-between items-center border-b border-brand-sand/20 shadow-sm">
+    <main class="flex-1 overflow-y-auto relative">
+        <header class="bg-white/80 backdrop-blur-md sticky top-0 z-10 px-8 py-5 flex justify-between items-center border-b border-brand-sand/20">
             <div>
-                <h2 class="text-2xl font-serif font-bold text-brand-coffee">Relatório Mensal</h2>
-                <p class="text-xs text-gray-400">Dados atualizados em: 02 Fev, 2026</p>
-            </div>
-            <div class="flex items-center gap-4">
-                <div class="relative">
-                    <i class="fa-solid fa-calendar absolute left-3 top-1/2 transform -translate-y-1/2 text-brand-gold"></i>
-                    <select class="bg-brand-beige border border-transparent hover:border-brand-gold text-sm rounded-full pl-10 pr-4 py-2 text-brand-coffee font-bold cursor-pointer outline-none transition appearance-none">
-                        <option>Janeiro 2026</option>
-                        <option>Dezembro 2025</option>
-                    </select>
+                <h2 class="text-2xl font-serif font-bold text-brand-coffee">Performance Digital</h2>
+                <div class="flex items-center gap-2 mt-1">
+                    <span class="w-2 h-2 rounded-full bg-brand-growth animate-pulse"></span>
+                    <p class="text-xs text-gray-400">Referência: Janeiro 2026</p>
                 </div>
-                <button onclick="window.print()" class="bg-brand-coffee text-white px-5 py-2 rounded-full text-sm hover:bg-black transition shadow-lg flex items-center gap-2">
-                    <i class="fa-solid fa-download"></i> <span class="hidden sm:inline">Exportar PDF</span>
-                </button>
             </div>
+            <button onclick="window.print()" class="bg-brand-coffee hover:bg-black text-white px-6 py-2.5 rounded-full text-sm transition shadow-lg flex items-center gap-2">
+                <i class="fa-solid fa-file-pdf"></i> Exportar
+            </button>
         </header>
 
-        <div class="p-6 md:p-10 max-w-7xl mx-auto space-y-8">
+        <div class="p-8 max-w-7xl mx-auto space-y-8">
             
-            <div class="glass-panel rounded-2xl p-0 relative overflow-hidden flex flex-col md:flex-row shadow-soft">
-                <div class="w-full md:w-1/3 h-64 md:h-auto relative">
-                    <div class="absolute inset-0 bg-brand-gold/20 mix-blend-multiply z-10"></div>
-                    <img src="foto.jpg" alt="Dra. Luciana" class="absolute inset-0 w-full h-full object-cover">
+            <div class="bg-white border border-brand-gold/30 rounded-xl p-5 shadow-sm flex items-center gap-5 relative overflow-hidden">
+                <div class="absolute right-0 top-0 w-64 h-full bg-gradient-to-l from-brand-sand/20 to-transparent"></div>
+                <div class="w-12 h-12 rounded-full bg-brand-gold text-white flex items-center justify-center shrink-0 shadow-md z-10">
+                    <i class="fa-solid fa-trophy text-lg"></i>
                 </div>
-
-                <div class="p-8 md:p-12 md:w-2/3 flex flex-col justify-center relative bg-white">
-                    <div class="absolute top-0 right-0 p-4 opacity-10">
-                        <i class="fa-solid fa-quote-right text-6xl text-brand-gold"></i>
-                    </div>
-                    <span class="text-xs font-bold tracking-widest text-brand-gold uppercase mb-2 block border-b border-brand-sand/30 pb-2 w-max">Saúde da Mulher</span>
-                    <h1 class="text-3xl md:text-4xl font-serif text-brand-coffee mb-4">Olá, Dra. Luciana!</h1>
-                    <p class="text-gray-600 leading-relaxed mb-6">
-                        O posicionamento de "Saúde Integrativa" está performando acima da média. Tivemos um <strong class="text-brand-coffee">aumento de 22%</strong> na retenção dos vídeos este mês. A paleta nude/dourado consolidou sua autoridade visual.
-                    </p>
-                    <div class="flex gap-4">
-                        <div class="text-center">
-                            <span class="block text-2xl font-serif font-bold text-brand-gold">45</span>
-                            <span class="text-[10px] text-gray-400 uppercase">Novos Agendamentos</span>
-                        </div>
-                        <div class="w-px bg-gray-200"></div>
-                        <div class="text-center">
-                            <span class="block text-2xl font-serif font-bold text-brand-gold">R$ 18,50</span>
-                            <span class="text-[10px] text-gray-400 uppercase">Custo p/ Lead</span>
-                        </div>
-                    </div>
+                <div class="z-10">
+                    <h4 class="font-serif font-bold text-brand-coffee text-lg">Crescimento Recorde no Instagram!</h4>
+                    <p class="text-sm text-gray-600 mt-1">Suas visualizações saltaram de 2k para <strong class="text-brand-coffee">6.500</strong> (+211%). Sua produção de conteúdo aumentou de 2 para <strong class="text-brand-coffee">28 publicações</strong>.</p>
                 </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="glass-panel p-6 rounded-xl relative overflow-hidden group hover:border-brand-gold transition duration-300">
-                    <div class="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition transform group-hover:scale-110">
-                        <i class="fa-solid fa-users-viewfinder text-5xl text-brand-coffee"></i>
-                    </div>
-                    <p class="text-xs text-gray-500 font-bold uppercase tracking-wider mb-1">Alcance (Contas)</p>
-                    <h3 class="text-4xl font-serif text-brand-coffee">12.5K</h3>
-                    <div class="mt-4 flex items-center text-xs font-bold text-green-600 bg-green-50 w-max px-2 py-1 rounded-md">
-                        <i class="fa-solid fa-arrow-trend-up mr-1"></i> +15%
+                <div class="glass-card p-6 rounded-xl relative overflow-hidden">
+                    <p class="text-xs text-gray-500 font-bold uppercase tracking-wider mb-2">Visualizações</p>
+                    <div class="flex items-end gap-2">
+                        <h3 class="text-4xl font-serif text-brand-coffee">6.5K</h3>
+                        <span class="text-xs font-bold text-brand-growth bg-green-50 px-2 py-1 rounded mb-1 border border-green-100">+211%</span>
                     </div>
                 </div>
-
-                <div class="glass-panel p-6 rounded-xl relative overflow-hidden group hover:border-brand-gold transition duration-300">
-                    <div class="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition transform group-hover:scale-110">
-                        <i class="fa-regular fa-heart text-5xl text-brand-coffee"></i>
-                    </div>
-                    <p class="text-xs text-gray-500 font-bold uppercase tracking-wider mb-1">Engajamento</p>
-                    <h3 class="text-4xl font-serif text-brand-coffee">4.8%</h3>
-                    <div class="mt-4 flex items-center text-xs font-bold text-green-600 bg-green-50 w-max px-2 py-1 rounded-md">
-                        <i class="fa-solid fa-check mr-1"></i> Acima da média
+                <div class="glass-card p-6 rounded-xl relative overflow-hidden">
+                    <p class="text-xs text-gray-500 font-bold uppercase tracking-wider mb-2">Novos Seguidores</p>
+                    <div class="flex items-end gap-2">
+                        <h3 class="text-4xl font-serif text-brand-coffee">+12</h3>
+                        <span class="text-xs font-bold text-brand-growth bg-green-50 px-2 py-1 rounded mb-1">Dobrou</span>
                     </div>
                 </div>
-
-                <div class="bg-brand-coffee text-white p-6 rounded-xl relative overflow-hidden shadow-lg">
-                    <div class="absolute -right-6 -top-6 w-24 h-24 bg-brand-gold rounded-full opacity-20 blur-xl"></div>
-                    <div class="relative z-10">
-                        <p class="text-xs text-brand-sand font-bold uppercase tracking-wider mb-1">Cliques no Link (Bio)</p>
-                        <h3 class="text-4xl font-serif text-white">142</h3>
-                        <p class="text-xs text-gray-300 mt-2">Leads qualificados para WhatsApp</p>
-                        <div class="w-full bg-white/10 h-1 mt-4 rounded-full overflow-hidden">
-                            <div class="bg-brand-gold h-full" style="width: 78%"></div>
-                        </div>
+                <div class="glass-card p-6 rounded-xl relative overflow-hidden">
+                    <p class="text-xs text-gray-500 font-bold uppercase tracking-wider mb-2">Interações</p>
+                    <div class="flex items-end gap-2">
+                        <h3 class="text-4xl font-serif text-brand-coffee">247</h3>
+                        <span class="text-xs font-bold text-brand-growth bg-green-50 px-2 py-1 rounded mb-1">+223%</span>
                     </div>
                 </div>
-
-                <div class="glass-panel p-6 rounded-xl relative overflow-hidden group hover:border-brand-gold transition duration-300">
-                    <div class="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition transform group-hover:scale-110">
-                        <i class="fa-solid fa-user-plus text-5xl text-brand-coffee"></i>
+                <div class="glass-card p-6 rounded-xl relative overflow-hidden border-b-4 border-b-brand-gold">
+                    <p class="text-xs text-gray-500 font-bold uppercase tracking-wider mb-2">Cliques no Link</p>
+                    <div class="flex items-end gap-2">
+                        <h3 class="text-4xl font-serif text-brand-coffee">18</h3>
+                        <span class="text-xs font-bold text-brand-growth bg-green-50 px-2 py-1 rounded mb-1">+350%</span>
                     </div>
-                    <p class="text-xs text-gray-500 font-bold uppercase tracking-wider mb-1">Seguidores</p>
-                    <h3 class="text-4xl font-serif text-brand-coffee">358</h3>
-                    <div class="mt-4 flex items-center text-xs font-bold text-brand-gold bg-brand-beige w-max px-2 py-1 rounded-md">
-                        Orgânico + Ads
-                    </div>
+                    <p class="text-[10px] text-gray-400 mt-2">Leads qualificados na Bio</p>
                 </div>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                
-                <div class="glass-panel p-8 rounded-2xl lg:col-span-2 shadow-soft">
-                    <div class="flex justify-between items-center mb-6">
-                        <h3 class="font-serif text-xl font-bold text-brand-coffee">Crescimento da Marca</h3>
-                        <div class="flex gap-4">
-                            <div class="flex items-center gap-2">
-                                <span class="w-3 h-3 rounded-full bg-brand-gold"></span>
-                                <span class="text-xs text-gray-500 font-semibold">Instagram</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <span class="w-3 h-3 rounded-full bg-gray-300"></span>
-                                <span class="text-xs text-gray-500 font-semibold">Facebook</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="relative h-72 w-full">
-                        <canvas id="performanceChart"></canvas>
-                    </div>
+                <div class="glass-card p-8 rounded-xl lg:col-span-2">
+                    <h3 class="font-serif text-xl font-bold text-brand-coffee mb-6">Evolução Mensal (Instagram)</h3>
+                    <div class="relative h-72 w-full"><canvas id="viewsChart"></canvas></div>
                 </div>
 
-                <div class="glass-panel p-0 rounded-2xl shadow-soft flex flex-col">
-                    <div class="p-6 border-b border-brand-sand/20">
-                        <h3 class="font-serif text-lg font-bold text-brand-coffee">Post Destaque</h3>
-                        <p class="text-xs text-gray-400">Melhor performance orgânica</p>
+                <div class="glass-card p-0 rounded-xl overflow-hidden shadow-md h-fit">
+                    <div class="p-4 bg-brand-coffee text-white flex justify-between items-center">
+                        <h3 class="font-serif font-bold text-sm">Post Campeão</h3>
+                        <i class="fa-solid fa-crown text-brand-gold"></i>
                     </div>
-                    
-                    <div class="p-6 flex-1 flex flex-col items-center text-center">
-                        <div class="w-20 h-20 bg-brand-beige rounded-full flex items-center justify-center mb-4 text-3xl text-brand-coffee relative">
-                            <i class="fa-solid fa-play"></i>
-                            <div class="absolute inset-0 border-2 border-brand-gold rounded-full animate-pulse"></div>
-                        </div>
-                        <h4 class="font-bold text-sm text-brand-coffee mb-2">Reels: "Mitos sobre Implantes"</h4>
-                        <p class="text-xs text-gray-500 mb-6 px-4">O vídeo teve alta retenção devido à edição dinâmica e abordagem direta.</p>
-                        
-                        <div class="grid grid-cols-2 gap-3 w-full">
-                            <div class="bg-gray-50 p-3 rounded-lg border border-gray-100">
-                                <span class="block text-lg font-bold text-brand-gold">3.2K</span>
-                                <span class="text-[10px] uppercase text-gray-400">Views</span>
-                            </div>
-                            <div class="bg-gray-50 p-3 rounded-lg border border-gray-100">
-                                <span class="block text-lg font-bold text-brand-gold">145</span>
-                                <span class="text-[10px] uppercase text-gray-400">Saves</span>
+                    <div class="relative aspect-[4/5] w-full bg-gray-100 group">
+                        <img src="post_quem_sou.jpg" alt="Post Top" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-5">
+                            <h4 class="text-white font-serif text-2xl italic mb-1">Quem sou EU?</h4>
+                            <div class="flex gap-4 text-white/90 text-sm font-bold">
+                                <span><i class="fa-solid fa-eye text-brand-gold"></i> 1.250</span>
+                                <span><i class="fa-solid fa-heart text-brand-gold"></i> 124</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <footer class="text-center py-8 border-t border-brand-sand/20 mt-8">
-                <div class="flex justify-center items-center gap-2 mb-2 opacity-50 grayscale hover:grayscale-0 transition">
-                    <img src="logo_azi.png" alt="Azi" class="h-6">
+            <div class="mt-8">
+                <h3 class="font-serif text-2xl font-bold text-brand-coffee mb-6 border-l-4 border-brand-gold pl-4">Identidade Visual & Conteúdo</h3>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="group relative rounded-xl overflow-hidden shadow-lg aspect-[9/16] cursor-pointer">
+                        <img src="story_medicina.jpg" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                            <span class="text-white font-serif text-lg">Branding</span>
+                        </div>
+                        <div class="absolute top-3 left-3 bg-white/90 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-brand-coffee">Story</div>
+                    </div>
+
+                    <div class="group relative rounded-xl overflow-hidden shadow-lg aspect-[9/16] cursor-pointer">
+                        <img src="story_dor.jpg" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                            <span class="text-white font-serif text-lg">Educativo</span>
+                        </div>
+                        <div class="absolute top-3 left-3 bg-white/90 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-brand-coffee">Story</div>
+                    </div>
+
+                    <div class="group relative rounded-xl overflow-hidden shadow-lg aspect-[9/16] cursor-pointer">
+                        <img src="story_horarios.jpg" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                            <span class="text-white font-serif text-lg">Conversão</span>
+                        </div>
+                        <div class="absolute top-3 left-3 bg-white/90 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-brand-coffee">Story</div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col justify-center items-center text-center border border-brand-sand/30">
+                        <div class="w-16 h-16 bg-brand-beige rounded-full flex items-center justify-center mb-4 text-brand-coffee text-2xl">
+                            <i class="fa-solid fa-camera"></i>
+                        </div>
+                        <h4 class="font-serif font-bold text-brand-coffee text-xl">25 Stories</h4>
+                        <p class="text-xs text-gray-500 mt-2">Produzidos em Janeiro</p>
+                        <div class="w-full h-px bg-brand-sand/30 my-4"></div>
+                        <p class="text-[10px] text-brand-growth font-bold uppercase">Recorde Mensal</p>
+                    </div>
                 </div>
+            </div>
+
+            <footer class="border-t border-brand-sand/20 pt-8 text-center pb-8">
                 <p class="text-xs text-gray-400">
                     &copy; 2026 Dra. Luciana Alcântara. Todos os direitos reservados.
-                    <br>Relatório confidencial gerado por Azi Comunicação.
+                    <br>Relatório gerado com inteligência de dados por <span class="font-bold text-brand-azi">Azi Comunicação</span>.
                 </p>
             </footer>
-
         </div>
     </main>
 
     <script>
-        // --- CONFIGURAÇÃO DO GRÁFICO (Chart.js) ---
-        const ctx = document.getElementById('performanceChart').getContext('2d');
-        
-        // Gradiente Dourado (Luxo)
-        const gradientGold = ctx.createLinearGradient(0, 0, 0, 400);
-        gradientGold.addColorStop(0, 'rgba(197, 160, 117, 0.5)'); // brand-gold
-        gradientGold.addColorStop(1, 'rgba(197, 160, 117, 0.0)');
+        const ctx = document.getElementById('viewsChart').getContext('2d');
+        const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+        gradient.addColorStop(0, 'rgba(197, 160, 117, 0.6)'); 
+        gradient.addColorStop(1, 'rgba(197, 160, 117, 0.0)'); 
 
         new Chart(ctx, {
             type: 'line',
             data: {
-                labels: ['01-07', '08-14', '15-21', '22-28', '29-31'],
+                labels: ['Sem 1', 'Sem 2', 'Sem 3', 'Sem 4'],
                 datasets: [{
-                    label: 'Alcance',
-                    data: [4200, 5100, 8400, 9200, 12500],
-                    borderColor: '#C5A075', // brand-gold
-                    backgroundColor: gradientGold,
-                    borderWidth: 3,
-                    pointBackgroundColor: '#fff',
-                    pointBorderColor: '#C5A075',
-                    pointRadius: 6,
-                    pointHoverRadius: 8,
-                    fill: true,
-                    tension: 0.4
+                    label: 'Janeiro (Atual)',
+                    data: [1800, 3200, 5100, 6500],
+                    borderColor: '#C5A075', backgroundColor: gradient,
+                    borderWidth: 3, pointBackgroundColor: '#4A4036', pointBorderColor: '#fff',
+                    pointRadius: 6, fill: true, tension: 0.4
                 },
                 {
-                    label: 'Média Anterior',
-                    data: [4000, 4100, 4200, 4500, 4600],
-                    borderColor: '#E5E7EB', // cinza claro
-                    borderWidth: 2,
-                    borderDash: [5, 5],
-                    pointRadius: 0,
-                    fill: false,
-                    tension: 0.4
+                    label: 'Dezembro (Anterior)',
+                    data: [500, 1200, 1500, 2000],
+                    borderColor: '#E5E7EB', borderWidth: 2, borderDash: [5, 5],
+                    pointRadius: 3, fill: false, tension: 0.4
                 }]
             },
             options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: { display: false },
-                    tooltip: {
-                        backgroundColor: '#4A4036',
-                        titleFont: { family: 'Lato', size: 13 },
-                        bodyFont: { family: 'Lato', size: 14, weight: 'bold' },
-                        padding: 12,
-                        cornerRadius: 8,
-                        displayColors: false,
-                        callbacks: {
-                            label: function(context) {
-                                return context.parsed.y + ' Pessoas';
-                            }
-                        }
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        grid: { color: '#F3F4F6', borderDash: [5, 5] },
-                        ticks: { font: { family: 'Lato' }, color: '#9CA3AF' }
-                    },
-                    x: {
-                        grid: { display: false },
-                        ticks: { font: { family: 'Lato' }, color: '#9CA3AF' }
-                    }
-                }
+                responsive: true, maintainAspectRatio: false,
+                plugins: { legend: { display: true, position: 'bottom' } },
+                scales: { y: { beginAtZero: true, grid: { color: '#F3F4F6' } }, x: { grid: { display: false } } }
             }
         });
     </script>
