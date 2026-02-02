@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +13,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
@@ -25,12 +25,28 @@
                     },
                     colors: { 
                         brand: { 
-                            beige: '#F5F0EB',   /* Fundo suave */
-                            sand: '#DCC8B6',    /* Tom Nude */
-                            gold: '#C5A075',    /* Dourado da marca */
-                            coffee: '#4A4036',  /* Marrom escuro (Texto) */
-                            azi: '#16a34a'      /* Verde Azi (Discreto) */
+                            beige: '#FAF7F2',
+                            sand: '#E6D2BF',
+                            gold: '#C5A075',
+                            darkGold: '#A67C52',
+                            coffee: '#4A4036',
+                            azi: '#16a34a',
+                            growth: '#10B981'
                         } 
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'slide-up': 'slideUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
                     }
                 }
             }
@@ -38,224 +54,283 @@
     </script>
 
     <style>
-        body { background-color: #FAF9F6; color: #4A4036; }
+        body { background-color: #FAF7F2; color: #4A4036; overflow-x: hidden; }
         
         /* Glass Effect */
-        .glass-card { 
-            background: rgba(255, 255, 255, 0.95); 
-            border: 1px solid rgba(197, 160, 117, 0.15); 
-            box-shadow: 0 10px 30px -10px rgba(74, 64, 54, 0.05); 
+        .glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(197, 160, 117, 0.1);
         }
 
-        /* Sidebar Navigation */
-        .nav-item { border-left: 3px solid transparent; transition: all 0.3s; }
-        .nav-item:hover, .nav-item.active { 
-            background: linear-gradient(90deg, #F5F0EB 0%, #FAF9F6 100%);
-            border-left-color: #C5A075;
-            color: #C5A075;
-        }
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #FAF7F2; }
+        ::-webkit-scrollbar-thumb { background: #C5A075; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #A67C52; }
 
-        /* Custom Scroll */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #DCC8B6; border-radius: 10px; }
+        /* Utilitários de Animação de Scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
-<body class="flex h-screen overflow-hidden font-sans">
+<body class="antialiased">
 
-    <aside class="w-72 bg-white border-r border-brand-sand/20 hidden md:flex flex-col justify-between z-20 shadow-sm">
-        <div>
-            <div class="p-8 text-center border-b border-brand-sand/10">
-                <div class="relative w-24 h-24 mx-auto mb-4">
-                    <div class="absolute inset-0 rounded-full border border-brand-gold p-1">
-                        <img src="foto.jpg" alt="Dra. Luciana" class="w-full h-full object-cover rounded-full">
-                    </div>
+    <nav class="fixed w-full z-50 glass shadow-sm transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full border border-brand-gold p-0.5 overflow-hidden">
+                    <img src="foto.jpg" class="w-full h-full object-cover rounded-full" alt="Perfil">
                 </div>
-                <h1 class="font-serif text-lg font-bold tracking-wide text-brand-coffee">DRA. LUCIANA<br><span class="text-xs font-sans tracking-[0.25em] text-brand-gold uppercase font-normal">Alcântara</span></h1>
-            </div>
-
-            <nav class="mt-6 flex flex-col gap-1">
-                <a href="#" class="px-8 py-4 nav-item active flex items-center gap-4 font-bold text-sm">
-                    <i class="fa-solid fa-chart-line w-5"></i> Visão Geral
-                </a>
-                <a href="#" class="px-8 py-4 nav-item flex items-center gap-4 font-semibold text-sm text-gray-500 hover:text-brand-coffee">
-                    <i class="fa-regular fa-image w-5"></i> Conteúdo (Posts)
-                </a>
-                <a href="#" class="px-8 py-4 nav-item flex items-center gap-4 font-semibold text-sm text-gray-500 hover:text-brand-coffee">
-                    <i class="fa-solid fa-users w-5"></i> Público
-                </a>
-            </nav>
-        </div>
-
-        <div class="p-6 bg-brand-beige/30">
-            <div class="flex items-center gap-3 opacity-70 hover:opacity-100 transition grayscale hover:grayscale-0">
-                <img src="logo_azi.png" alt="Azi Logo" class="w-8 h-8 object-contain">
-                <div class="text-[10px] leading-tight">
-                    <p class="font-bold text-gray-500">Relatório gerado por</p>
-                    <p class="text-brand-azi font-bold text-xs">Azi Comunicação</p>
+                <div class="leading-tight">
+                    <h1 class="font-serif font-bold text-brand-coffee text-lg tracking-wide">DRA. LUCIANA</h1>
+                    <p class="text-[10px] text-brand-gold uppercase tracking-widest">Relatório Mensal</p>
                 </div>
             </div>
-        </div>
-    </aside>
-
-    <main class="flex-1 overflow-y-auto relative">
-        
-        <header class="bg-white/80 backdrop-blur-md sticky top-0 z-10 px-8 py-5 flex justify-between items-center border-b border-brand-sand/20">
-            <div>
-                <h2 class="text-2xl font-serif font-bold text-brand-coffee">Performance Digital</h2>
-                <p class="text-xs text-gray-400 mt-1">Período: 1 Jan - 31 Jan (Comparado ao mês anterior)</p>
-            </div>
-            <button onclick="window.print()" class="bg-brand-coffee hover:bg-black text-white px-5 py-2 rounded-lg text-sm transition shadow-lg flex items-center gap-2">
-                <i class="fa-solid fa-download"></i> Baixar PDF
-            </button>
-        </header>
-
-        <div class="p-8 max-w-7xl mx-auto space-y-8">
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="glass-card p-6 rounded-xl relative overflow-hidden group">
-                    <div class="absolute right-0 top-0 p-4 opacity-10 group-hover:scale-110 transition"><i class="fa-solid fa-chart-pie text-4xl text-brand-gold"></i></div>
-                    <p class="text-xs text-gray-500 font-bold uppercase tracking-wider mb-2">Atividade do Perfil</p>
-                    <div class="flex items-end gap-2">
-                        <h3 class="text-4xl font-serif text-brand-coffee">207</h3>
-                        <span class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded mb-1 flex items-center">
-                            <i class="fa-solid fa-arrow-trend-up mr-1"></i> 223,4%
-                        </span>
-                    </div>
-                    <p class="text-[10px] text-gray-400 mt-2">Ações executadas no perfil</p>
-                </div>
-
-                <div class="glass-card p-6 rounded-xl relative overflow-hidden group">
-                    <div class="absolute right-0 top-0 p-4 opacity-10 group-hover:scale-110 transition"><i class="fa-regular fa-eye text-4xl text-brand-gold"></i></div>
-                    <p class="text-xs text-gray-500 font-bold uppercase tracking-wider mb-2">Visitas ao Perfil</p>
-                    <div class="flex items-end gap-2">
-                        <h3 class="text-4xl font-serif text-brand-coffee">189</h3>
-                        <span class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded mb-1 flex items-center">
-                            <i class="fa-solid fa-arrow-trend-up mr-1"></i> 215%
-                        </span>
-                    </div>
-                    <p class="text-[10px] text-gray-400 mt-2">Pessoas que entraram na bio</p>
-                </div>
-
-                <div class="glass-card p-6 rounded-xl relative overflow-hidden group border-b-4 border-b-brand-gold">
-                    <div class="absolute right-0 top-0 p-4 opacity-10 group-hover:scale-110 transition"><i class="fa-brands fa-whatsapp text-4xl text-brand-gold"></i></div>
-                    <p class="text-xs text-gray-500 font-bold uppercase tracking-wider mb-2">Toques no Link</p>
-                    <div class="flex items-end gap-2">
-                        <h3 class="text-4xl font-serif text-brand-coffee">18</h3>
-                        <span class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded mb-1 flex items-center">
-                            <i class="fa-solid fa-arrow-trend-up mr-1"></i> 350%
-                        </span>
-                    </div>
-                    <p class="text-[10px] text-gray-400 mt-2">Potenciais pacientes (WhatsApp)</p>
-                </div>
-
-                <div class="glass-card p-6 rounded-xl relative overflow-hidden group">
-                    <div class="absolute right-0 top-0 p-4 opacity-10 group-hover:scale-110 transition"><i class="fa-solid fa-star text-4xl text-brand-gold"></i></div>
-                    <p class="text-xs text-gray-500 font-bold uppercase tracking-wider mb-2">Top Post (Alcance)</p>
-                    <div class="flex items-end gap-2">
-                        <h3 class="text-4xl font-serif text-brand-coffee">1.250</h3>
-                        <span class="text-xs font-bold text-brand-coffee bg-brand-beige px-2 py-1 rounded mb-1">
-                            Visualizações
-                        </span>
-                    </div>
-                    <p class="text-[10px] text-gray-400 mt-2">Post: "Quem sou eu?"</p>
-                </div>
+            <div class="hidden md:flex gap-8 text-sm font-bold text-gray-500 uppercase tracking-wider">
+                <a href="#resumo" class="hover:text-brand-gold transition">Resumo</a>
+                <a href="#metricas" class="hover:text-brand-gold transition">Métricas</a>
+                <a href="#galeria" class="hover:text-brand-gold transition">Criativos</a>
+                <a href="#proximos" class="hover:text-brand-gold transition">Futuro</a>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                
-                <div class="glass-card p-8 rounded-xl lg:col-span-2">
-                    <div class="flex justify-between items-center mb-6">
-                        <h3 class="font-serif text-xl font-bold text-brand-coffee">Interações do Perfil</h3>
-                        <div class="flex gap-4 text-xs">
-                            <span class="flex items-center gap-1"><span class="w-3 h-3 rounded-full bg-brand-gold"></span> Curtidas (186)</span>
-                            <span class="flex items-center gap-1"><span class="w-3 h-3 rounded-full bg-gray-300"></span> Comentários (29)</span>
-                        </div>
-                    </div>
-                    <div class="relative h-64 w-full">
-                        <canvas id="interactionChart"></canvas>
-                    </div>
-                    <div class="mt-4 grid grid-cols-3 gap-4 text-center text-xs text-gray-500 border-t border-brand-sand/20 pt-4">
-                        <div>
-                            <span class="block text-lg font-bold text-brand-coffee">3</span>
-                            Compartilhamentos
-                        </div>
-                        <div>
-                            <span class="block text-lg font-bold text-brand-coffee">4</span>
-                            Reposts
-                        </div>
-                        <div>
-                            <span class="block text-lg font-bold text-brand-coffee">32</span>
-                            Respostas (Stories)
-                        </div>
-                    </div>
-                </div>
-
-                <div class="glass-card p-0 rounded-xl overflow-hidden flex flex-col">
-                    <div class="p-5 border-b border-brand-sand/10 bg-brand-coffee text-white">
-                        <h3 class="font-serif font-bold">Conteúdo Campeão</h3>
-                        <p class="text-xs text-brand-sand opacity-80">Maior retenção e alcance</p>
-                    </div>
-                    
-                    <div class="p-6 flex-1 flex flex-col items-center">
-                        <div class="w-full aspect-[4/5] rounded-lg overflow-hidden relative mb-4 shadow-lg group cursor-pointer">
-                            <img src="foto.jpg" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
-                            <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-4 text-white">
-                                <p class="font-serif text-lg font-bold">Quem sou EU?</p>
-                                <div class="flex gap-3 text-xs mt-1 opacity-90">
-                                    <span><i class="fa-solid fa-eye"></i> 1.250</span>
-                                    <span><i class="fa-solid fa-heart"></i> 124</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="w-full space-y-3">
-                            <div class="flex justify-between items-center text-sm border-b border-gray-100 pb-2">
-                                <span class="text-gray-500">2. Medicina da Mulher</span>
-                                <span class="font-bold text-brand-coffee">729 views</span>
-                            </div>
-                            <div class="flex justify-between items-center text-sm border-b border-gray-100 pb-2">
-                                <span class="text-gray-500">3. Consciência Negra</span>
-                                <span class="font-bold text-brand-coffee">319 views</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <footer class="border-t border-brand-sand/20 pt-8 text-center">
-                <p class="text-xs text-gray-400">
-                    &copy; 2026 Dra. Luciana Alcântara. Todos os direitos reservados.
-                    <br>Estratégia e Inteligência de Dados: <span class="font-bold text-brand-azi">Azi Comunicação</span>.
-                </p>
-            </footer>
-
+            <button onclick="window.print()" class="bg-brand-coffee hover:bg-black text-white px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition shadow-lg transform hover:scale-105">
+                <i class="fa-solid fa-download mr-2"></i> PDF
+            </button>
         </div>
-    </main>
+    </nav>
+
+    <header id="resumo" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-gold/10 rounded-full blur-[100px] -mr-40 -mt-40 animate-float"></div>
+        <div class="absolute bottom-0 left-0 w-[300px] h-[300px] bg-brand-sand/20 rounded-full blur-[80px] -ml-20 -mb-20 animate-float" style="animation-delay: 2s;"></div>
+
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <span class="inline-block py-1 px-3 rounded-full bg-brand-gold/10 text-brand-darkGold text-xs font-bold uppercase tracking-widest mb-6 border border-brand-gold/20 animate-slide-up">
+                Referência: Janeiro 2026
+            </span>
+            <h1 class="text-5xl md:text-7xl font-serif font-bold text-brand-coffee mb-6 leading-tight animate-slide-up" style="animation-delay: 0.1s;">
+                Janeiro de <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-brand-darkGold">Recordes.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto mb-10 font-light animate-slide-up" style="animation-delay: 0.2s;">
+                Sua autoridade digital atingiu um novo patamar. O volume de conteúdo e a estratégia visual resultaram em um crescimento de <strong>+211%</strong> no alcance.
+            </p>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto animate-slide-up" style="animation-delay: 0.3s;">
+                <div class="bg-white p-4 rounded-xl shadow-md border-b-4 border-brand-growth">
+                    <span class="block text-3xl font-serif font-bold text-brand-coffee">6.5K</span>
+                    <span class="text-xs text-gray-400 uppercase tracking-wide">Visualizações</span>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-md border-b-4 border-brand-growth">
+                    <span class="block text-3xl font-serif font-bold text-brand-coffee">+223%</span>
+                    <span class="text-xs text-gray-400 uppercase tracking-wide">Interações</span>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-md border-b-4 border-brand-growth">
+                    <span class="block text-3xl font-serif font-bold text-brand-coffee">28</span>
+                    <span class="text-xs text-gray-400 uppercase tracking-wide">Postagens</span>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-md border-b-4 border-brand-growth">
+                    <span class="block text-3xl font-serif font-bold text-brand-coffee">18</span>
+                    <span class="text-xs text-gray-400 uppercase tracking-wide">Leads (Bio)</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="metricas" class="py-20 bg-white relative">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row gap-12 items-center">
+                
+                <div class="md:w-1/3 reveal">
+                    <h2 class="text-3xl font-serif font-bold text-brand-coffee mb-4">Crescimento Exponencial</h2>
+                    <div class="w-16 h-1 bg-brand-gold rounded-full mb-6"></div>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Saímos de um patamar de manutenção em Dezembro para uma <strong>tração agressiva</strong> em Janeiro. A consistência nos Stories (25 publicados) manteve o público aquecido, resultando em mais visitas ao perfil e cliques no link.
+                    </p>
+                    
+                    <div class="bg-brand-beige p-6 rounded-xl border border-brand-sand">
+                        <h4 class="font-bold text-brand-coffee mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-crown text-brand-gold"></i> Top Performance
+                        </h4>
+                        <div class="flex gap-4 items-center">
+                            <img src="post_quem_sou.jpg" class="w-16 h-20 object-cover rounded-lg shadow-sm">
+                            <div>
+                                <p class="text-sm font-bold text-brand-coffee">Post: "Quem Sou Eu?"</p>
+                                <p class="text-xs text-gray-500 mt-1">1.250 Visualizações</p>
+                                <p class="text-xs text-brand-growth font-bold mt-1">+1 Seguidor Direto</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:w-2/3 w-full reveal">
+                    <div class="glass p-6 rounded-2xl shadow-xl border border-gray-100">
+                        <canvas id="mainChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="galeria" class="py-20 bg-brand-coffee text-brand-beige overflow-hidden">
+        <div class="container mx-auto px-6 mb-12 text-center reveal">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4 text-white">Galeria de Conteúdo</h2>
+            <p class="text-brand-sand/80 max-w-2xl mx-auto">Uma seleção estratégica dos 28 conteúdos produzidos, focados em Educação, Autoridade e Humanização.</p>
+        </div>
+
+        <div class="relative w-full overflow-hidden py-4 reveal">
+            <div class="flex gap-6 animate-marquee w-max hover:pause">
+                <div class="w-64 aspect-[9/16] rounded-xl overflow-hidden shadow-2xl transform transition hover:scale-105 duration-300 relative group">
+                    <img src="1.jpg" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white font-serif">Educativo</div>
+                </div>
+                <div class="w-64 aspect-[9/16] rounded-xl overflow-hidden shadow-2xl transform transition hover:scale-105 duration-300 relative group">
+                    <img src="2.jpg" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white font-serif">Branding</div>
+                </div>
+                <div class="w-64 aspect-[9/16] rounded-xl overflow-hidden shadow-2xl transform transition hover:scale-105 duration-300 relative group">
+                    <img src="3.jpg" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white font-serif">Aviso</div>
+                </div>
+                <div class="w-64 aspect-[9/16] rounded-xl overflow-hidden shadow-2xl transform transition hover:scale-105 duration-300 relative group">
+                    <img src="6.jpg" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white font-serif">Conversão</div>
+                </div>
+                <div class="w-64 aspect-[9/16] rounded-xl overflow-hidden shadow-2xl transform transition hover:scale-105 duration-300 relative group">
+                    <img src="7.jpg" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white font-serif">Série 1</div>
+                </div>
+                
+                <div class="w-64 aspect-[9/16] rounded-xl overflow-hidden shadow-2xl transform transition hover:scale-105 duration-300 relative group">
+                    <img src="8.jpg" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white font-serif">Série 2</div>
+                </div>
+                <div class="w-64 aspect-[9/16] rounded-xl overflow-hidden shadow-2xl transform transition hover:scale-105 duration-300 relative group">
+                    <img src="9.jpg" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white font-serif">Série 3</div>
+                </div>
+                <div class="w-64 aspect-[9/16] rounded-xl overflow-hidden shadow-2xl transform transition hover:scale-105 duration-300 relative group">
+                    <img src="10.jpg" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white font-serif">Série 4</div>
+                </div>
+                <div class="w-64 aspect-[9/16] rounded-xl overflow-hidden shadow-2xl transform transition hover:scale-105 duration-300 relative group">
+                    <img src="4.jpg" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white font-serif">Bastidores</div>
+                </div>
+                <div class="w-64 aspect-[9/16] rounded-xl overflow-hidden shadow-2xl transform transition hover:scale-105 duration-300 relative group">
+                    <img src="5.jpg" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white font-serif">Autoridade</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-8">
+            <p class="text-xs uppercase tracking-widest text-brand-gold/50">Arraste ou passe o mouse para pausar</p>
+        </div>
+    </section>
+
+    <section id="proximos" class="py-20 container mx-auto px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12 reveal">
+                <h2 class="text-3xl font-serif font-bold text-brand-coffee mb-2">Planejamento Fevereiro</h2>
+                <p class="text-gray-500">Próximas ações para manter o crescimento.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 reveal">
+                <div class="glass p-8 rounded-2xl border-l-4 border-brand-gold">
+                    <h3 class="text-xl font-bold text-brand-coffee mb-4">Manutenção</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3 text-gray-600">
+                            <i class="fa-solid fa-check text-brand-growth mt-1"></i>
+                            <span>Manter frequência de 3 posts no Feed semanais.</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-gray-600">
+                            <i class="fa-solid fa-check text-brand-growth mt-1"></i>
+                            <span>Continuar com média de 5 Stories diários (Bastidores + Dicas).</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="glass p-8 rounded-2xl border-l-4 border-brand-growth">
+                    <h3 class="text-xl font-bold text-brand-coffee mb-4">Novas Estratégias</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3 text-gray-600">
+                            <i class="fa-solid fa-rocket text-brand-gold mt-1"></i>
+                            <span><strong>Reels Educativos:</strong> Vídeos curtos respondendo dúvidas de caixinha.</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-gray-600">
+                            <i class="fa-solid fa-rocket text-brand-gold mt-1"></i>
+                            <span><strong>Anúncios Específicos:</strong> Campanhas de tráfego direto para agendamento.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white border-t border-brand-sand py-10 text-center">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-center items-center gap-2 mb-4 opacity-60 grayscale hover:grayscale-0 transition duration-500">
+                <img src="logo_azi.png" alt="Azi" class="h-8">
+                <span class="text-sm font-bold text-gray-400">Azi Comunicação</span>
+            </div>
+            <p class="text-xs text-gray-400">&copy; 2026 Dra. Luciana Alcântara. Todos os direitos reservados.</p>
+        </div>
+    </footer>
 
     <script>
-        // Configuração do Gráfico (Baseado nos dados de 3 jan a 1 fev)
-        const ctx = document.getElementById('interactionChart').getContext('2d');
-        
-        // Gradiente Dourado
-        const gradient = ctx.createLinearGradient(0, 0, 0, 300);
-        gradient.addColorStop(0, 'rgba(197, 160, 117, 0.5)');
+        // --- Animação de Scroll (Reveal) ---
+        window.addEventListener('scroll', reveal);
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+            for (var i = 0; i < reveals.length; i++) {
+                var windowheight = window.innerHeight;
+                var revealtop = reveals[i].getBoundingClientRect().top;
+                var revealpoint = 150;
+                if (revealtop < windowheight - revealpoint) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        reveal(); // Trigger once on load
+
+        // --- Gráfico Chart.js ---
+        const ctx = document.getElementById('mainChart').getContext('2d');
+        const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+        gradient.addColorStop(0, 'rgba(197, 160, 117, 0.5)'); // Gold
         gradient.addColorStop(1, 'rgba(197, 160, 117, 0.0)');
 
         new Chart(ctx, {
             type: 'line',
             data: {
-                labels: ['03 Jan', '10 Jan', '17 Jan', '24 Jan', '01 Fev'],
+                labels: ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4'],
                 datasets: [{
-                    label: 'Interações Totais',
-                    data: [20, 45, 124, 80, 186], // Pico no final do mês conforme print
+                    label: 'Janeiro (Atual)',
+                    data: [1800, 3200, 5100, 6500],
                     borderColor: '#C5A075',
                     backgroundColor: gradient,
-                    borderWidth: 2,
-                    pointBackgroundColor: '#fff',
-                    pointBorderColor: '#4A4036',
-                    pointRadius: 5,
+                    borderWidth: 3,
+                    pointBackgroundColor: '#4A4036',
+                    pointBorderColor: '#fff',
+                    pointRadius: 6,
                     fill: true,
+                    tension: 0.4
+                },
+                {
+                    label: 'Dezembro (Anterior)',
+                    data: [500, 1200, 1500, 2000],
+                    borderColor: '#E5E7EB',
+                    borderWidth: 2,
+                    borderDash: [5, 5],
+                    pointRadius: 0,
+                    fill: false,
                     tension: 0.4
                 }]
             },
@@ -263,28 +338,39 @@
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
-                    legend: { display: false },
+                    legend: { position: 'top', align: 'end' },
                     tooltip: {
                         backgroundColor: '#4A4036',
                         titleFont: { family: 'Lato' },
                         bodyFont: { family: 'Lato' },
-                        padding: 10,
-                        displayColors: false
+                        padding: 12,
+                        cornerRadius: 8
                     }
                 },
                 scales: {
-                    y: {
-                        beginAtZero: true,
-                        grid: { color: '#F3F4F6', borderDash: [5, 5] },
-                        ticks: { font: { family: 'Lato' }, color: '#9CA3AF' }
-                    },
-                    x: {
-                        grid: { display: false },
-                        ticks: { font: { family: 'Lato' }, color: '#9CA3AF' }
-                    }
+                    y: { beginAtZero: true, grid: { color: '#F3F4F6' } },
+                    x: { grid: { display: false } }
+                },
+                animation: {
+                    duration: 2000,
+                    easing: 'easeOutQuart'
                 }
             }
         });
     </script>
+
+    <style>
+        /* Animação Marquee Personalizada */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            animation: marquee 40s linear infinite;
+        }
+        .hover\:pause:hover {
+            animation-play-state: paused;
+        }
+    </style>
 </body>
 </html>
